@@ -1,0 +1,19 @@
+/* ===================================================
+ * Copyright 2012 AEGIS.net, Inc.
+ * =================================================== */
+import beans.PotBellyShop;
+import service.GetPotBellyShopData;
+
+response.contentType = 'text/xml'
+
+results = new GetPotBellyShopData().potBellyShops
+
+html.potbellyshops {
+    results.each { s ->
+        potbellyshop(
+            outcome:"$s.visitors",
+            lat:s.latitude,
+            lng:s.longitude
+        )
+    }
+}
